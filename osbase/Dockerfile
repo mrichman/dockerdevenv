@@ -1,4 +1,4 @@
-FROM dockerfile/ubuntu
+FROM ubuntu:16.04
 
 MAINTAINER Mark Richman <mark@markrichman.com>
 
