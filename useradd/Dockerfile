@@ -1,8 +1,8 @@
-FROM bketelsen/uibase
+FROM mrichman/uibase
 
-MAINTAINER Brian Ketelsen <bketelsen@gmail.com>
+MAINTAINER Mark Richman <mark@markrichman.com>
 USER root
-ENV user bketelsen 
+ENV user mrichman
 RUN adduser $user && echo "$user:$user" | chpasswd && adduser $user sudo
 
 ADD supervisord.conf /home/$user/supervisord.conf
