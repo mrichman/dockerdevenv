@@ -4,29 +4,29 @@ set -e
 
 git submodule update --init --recursive
 cd osbase
-echo "Building bketelsen/osbase"
-docker build -t bketelsen/osbase .
-docker push bketelsen/osbase
+echo "Building mrichman/osbase"
+docker build -t mrichman/osbase .
+docker push mrichman/osbase
 
 cd ../commandbase
-echo "Building bketelsen/commandbase"
-docker build -t bketelsen/commandbase .
-docker push bketelsen/commandbase
+echo "Building mrichman/commandbase"
+docker build -t mrichman/commandbase .
+docker push mrichman/commandbase
 
 cd ../uibase
-echo "Building bketelsen/uibase"
-docker build -t bketelsen/uibase .
-docker push bketelsen/uibase
+echo "Building mrichman/uibase"
+docker build -t mrichman/uibase .
+docker push mrichman/uibase
 
 cd ../useradd
-echo "Building bketelsen/useradd"
-docker build -t bketelsen/useradd .
-docker push bketelsen/useradd
+echo "Building mrichman/useradd"
+docker build -t mrichman/useradd .
+docker push mrichman/useradd
 
 cd ../devenv 
-echo "Building bketelsen/devenv"
-docker build -t bketelsen/devenv .
-docker push bketelsen/devenv
+echo "Building mrichman/devenv"
+docker build -t mrichman/devenv .
+docker push mrichman/devenv
 
 cd ..
 
