@@ -1,7 +1,7 @@
-FROM bketelsen/useradd
+FROM mrichman/useradd
 
-MAINTAINER Brian Ketelsen <bketelsen@gmail.com>
-ENV user bketelsen
+MAINTAINER Mark Richman <mark@markrichman.com>
+ENV user mrichman
 USER root
 RUN chsh -s /usr/bin/zsh $user
 ADD stowDotfiles.sh /home/$user/stowDotfiles.sh
