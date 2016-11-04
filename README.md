@@ -8,7 +8,7 @@ development environment anywhere I go.  I love i3 Window Manager, and hate to be
 More importantly, this process makes your development environment 100% repeatable and portable; which 
 is the same ethos that Docker attempts to bring to your applications.  No more pain when you get a new 
 developer machine.  No more pain when working on a borrowed computer.  No more pain when working on a remote
-server.  Just docker pull bketelsen/devenv, and run it.  You'll have exactly the same development
+server.  Just docker pull mrichman/devenv, and run it.  You'll have exactly the same development
 experience on EVERY computer you use, whether it's your Mac or a debugging session on a QA/Staging 
 server.
 
@@ -21,8 +21,8 @@ when Internet is unreliably slow.  Using this Docker development container works
 Docker or Boot2Docker.  
 
 #### USAGE ####
-Usage instructions assume that you've cloned this repo and changed my username {bketelsen} to your own.
-*** Running the docker image bketelsen/devenv will give you my dotfiles, and you'll be running as user `bketelsen`.  Instead FORK this repo and make changes. ***
+Usage instructions assume that you've cloned this repo and changed my username {mrichman} to your own.
+*** Running the docker image mrichman/devenv will give you my dotfiles, and you'll be running as user `mrichman`.  Instead FORK this repo and make changes. ***
 Also assumed: You've run the buildContainers.sh script and pushed your images to hub.docker.com
 
 ##### Mac #####
@@ -59,12 +59,12 @@ This may change, because I really like Arch.  But it is easier to setup an Ubunt
   so I'm starting here.
 
 #### Layer 1 ####
-bketelsen/osbase 
+mrichman/osbase 
 
 This layer adds openssh-server.  Not using it yet.  May never need it.  But it's there.
 
 #### Layer 2 ####
-bketelsen/commandbase
+mrichman/commandbase
 
 This layer adds development tools and command tools.  Right now they're development tools for Go, but they could be for any language.
 In fact, one could create many different `commandbase` containers and have a unique dev environment for each different
@@ -76,7 +76,7 @@ RUN curl -Ls https://storage.googleapis.com/golang/go1.3.3.linux-amd64.tar.gz | 
 ```
 
 #### Layer 3 ####
-bketelsen/uibase
+mrichman/uibase
 
 This layer adds the i3 window manager, a VNC server and the tools needed to be comfortable in i3.
 
@@ -88,7 +88,7 @@ RUN easy_install supervisor
 TODO: Good web browser like Chrome, Chromium, Firefox
 
 #### Layer 4 ####
-bketelsen/devenv
+mrichman/devenv
 
 This is the final layer, the container that you'll want to run. It adds your personalized configurations.
 
@@ -99,12 +99,12 @@ TODO:
 To run you should attach a local volume.  Although the entire home directory is exported as a volume, you shouldn't attach
 an entire local home dir or you'll overwrite your own config files.  Instead, selectively attach folders like this:
 
-`docker run -d -P -v /Users/bketelsen/src:/home/bketelsen/src bketelsen/devenv`
+`docker run -d -P -v /Users/mrichman/src:/home/mrichman/src mrichman/devenv`
 
 Get the VNC port:
-`docker port bketelsen/devenv 5901` for Thunderbolt display full screen.
+`docker port mrichman/devenv 5901` for Thunderbolt display full screen.
 or
-`docker port bketelsen/devenv 5902` for MBP 15" display full screen
+`docker port mrichman/devenv 5902` for MBP 15" display full screen
 
 Then connect with vnc via DOCKERHOST_IP:VNCPORT  The vnc password is `docker` and is contained in /useradd/vncpasswd.  
 Generate your own if you wish and replace this file.
